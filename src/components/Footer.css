@@ -1,68 +1,148 @@
-/* Footer component styling */
-/* Premium, modern design with dark background and subtle glassmorphism */
+/* src/components/Footer.css */
 .footer {
+  background: #001733;
+  color: #cbd5e1;
+  border-top: 3px solid #f59e0b;
+  padding: 3rem 1.5rem 1.5rem;
+  font-size: 0.88rem;
+}
+
+.footer__top {
+  max-width: 1200px;
+  margin: 0 auto 2.5rem;
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1.5fr;
+  gap: 2.5rem;
+}
+
+.footer__brand-header {
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 1.5rem 2rem;
-  background: rgba(20, 20, 20, 0.85);
-  backdrop-filter: blur(8px);
-  color: #e0e0e0;
-  font-family: 'Inter', sans-serif;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer__left,
-.footer__center,
-.footer__right {
-  display: flex;
-  align-items: center;
-}
-
-.footer__left {
-  flex: 1;
-}
-
-.footer__center {
-  flex: 2;
-  justify-content: center;
-  gap: 1.5rem;
-}
-
-.footer__center a {
-  color: #a0c4ff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.2s ease;
-}
-
-.footer__center a:hover {
-  color: #fff;
-}
-
-.footer__right {
-  flex: 1;
-  justify-content: flex-end;
-  font-size: 0.9rem;
-  opacity: 0.85;
+  gap: 0.85rem;
+  margin-bottom: 0.75rem;
 }
 
 .footer__logo {
-  width: 40px;
-  height: auto;
-  margin-right: 0.75rem;
-  filter: drop-shadow(0 0 4px rgba(255, 255, 255, 0.3));
+  width: 44px;
+  height: 44px;
 }
 
-@media (max-width: 768px) {
-  .footer {
-    flex-direction: column;
-    text-align: center;
-  }
-  .footer__center {
-    margin: 1rem 0;
-  }
-  .footer__right {
-    justify-content: center;
+.footer__brand-header h4 {
+  font-size: 1.1rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.footer__brand-header p {
+  font-size: 0.78rem;
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+.footer__tagline {
+  font-size: 0.82rem;
+  line-height: 1.6;
+  color: #94a3b8;
+}
+
+.footer__links-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer__links-col h5,
+.footer__student-card h5 {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  color: #f59e0b;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.footer__links-col a {
+  color: #cbd5e1;
+  text-decoration: none;
+  font-size: 0.84rem;
+  transition: color 0.2s, transform 0.2s;
+  display: inline-block;
+}
+
+.footer__links-col a:hover {
+  color: #38bdf8;
+  transform: translateX(4px);
+}
+
+.footer__student-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+}
+
+.student-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.sg-item {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding-bottom: 0.35rem;
+}
+
+.sg-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.sg-lbl {
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.sg-val {
+  color: #ffffff;
+  font-weight: 700;
+  text-align: right;
+}
+
+.sg-val.mono {
+  font-family: var(--font-mono);
+  color: #f59e0b;
+}
+
+.footer__bottom {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.78rem;
+  color: #64748b;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.repo-link {
+  color: #38bdf8;
+  text-decoration: none;
+  font-family: var(--font-mono);
+}
+
+.repo-link:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  .footer__top {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
   }
 }

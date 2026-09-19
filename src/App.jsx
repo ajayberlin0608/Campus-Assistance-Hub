@@ -16,19 +16,47 @@ function App() {
   const [showHots, setShowHots] = useState(false);
   const [showEmergency, setShowEmergency] = useState(false);
 
-  const handleSelect = (service) => setSelectedService(service);
+  const handleSelect = (service) => {
+    setSelectedService(service);
+  };
+
+  const handleCloseDetails = () => {
+    setSelectedService(null);
+  };
 
   return (
     <div className="app">
-      <Header onShowHots={() => setShowHots(true)} onShowEmergency={() => setShowEmergency(true)} />
+      <Header
+        onShowHots={() => setShowHots(true)}
+        onShowEmergency={() => setShowEmergency(true)}
+      />
+
       <Hero />
+
       <main className="container">
         <ServiceGrid services={services} onSelect={handleSelect} />
-        {selectedService && <ServiceDetails service={selectedService} onClose={() => setSelectedService(null)} />}
-        <LifeCycleMonitor />
+
+        {/* Dynamic Single-Page Service Details Modal */}
+        {selectedService && (
+          <ServiceDetails
+            service={selectedService}
+            onClose={handleCloseDetails}
+          />
+        )}
+
+        {/* Module 6 React Class Component with Lifecycle & Component API */}
+        <LifeCycleMonitor
+          activeService={selectedService}
+          totalServices={services.length}
+        />
       </main>
+
       <Footer />
+
+      {/* HOTS Scalability Justification Modal */}
       {showHots && <HotsModal onClose={() => setShowHots(false)} />}
+
+      {/* 24/7 Priority Emergency Directory Modal */}
       {showEmergency && <EmergencyModal onClose={() => setShowEmergency(false)} />}
     </div>
   );

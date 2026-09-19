@@ -1,12 +1,12 @@
 /* src/index.css */
 :root {
-  --color-primary: #002855; /* VIT navy */
+  --color-primary: #002855; /* VIT Vellore Navy */
   --color-secondary: #0f4c81; /* Sapphire */
-  --color-accent: #f59e0b; /* Gold */
-  --color-bg: #f5f7fa;
+  --color-accent: #f59e0b; /* Academic Gold */
+  --color-bg: #f8fafc;
   --color-card-bg: #ffffff;
-  --color-text: #212529;
-  --font-base: 'Plus Jakarta Sans', sans-serif;
+  --color-text: #0f172a;
+  --font-base: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
 }
 
@@ -21,6 +21,7 @@ body {
   background: var(--color-bg);
   color: var(--color-text);
   line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -29,7 +30,7 @@ a {
 }
 
 .container {
-  max-width: 1200px;
+  max-width: 1240px;
   margin: 0 auto;
-  padding: 1rem;
+  padding: 1.5rem;
 }

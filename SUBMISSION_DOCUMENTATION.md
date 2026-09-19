@@ -160,30 +160,36 @@ The application was inspected using **React Developer Tools**:
 
 # SCREENSHOTS OF APPLICATION
 
-*(Paste screenshots captured from the running application here)*
-
 1. **Main Application Header & Hero View:**
-   - Showing VIT Vellore branding, live clock, campus notice ticker, search bar, and 4 metric cards.
+   ![Main Header & Hero](screenshots/screenshot_1_hero_header.png)
+   - Showing VIT Vellore branding, live IST clock, rolling notice ticker, student credentials badge (**AJAY BERLIN · 24BCE0449**), and 4 core metric cards.
 
 2. **Campus Service Cards Grid:**
-   - Showing the 8 services with badges, ratings, locations, hours, and action triggers.
+   ![Campus Services Directory](screenshots/screenshot_2_service_cards.png)
+   - Showing the 8 services with color-coded badges, star ratings, locations, hours, search bar, and category filter pills.
 
 3. **Dynamic Single-Page Service Details View:**
-   - Showing selected service details, key facilities checklist, FAQs, officer in charge, and quick action buttons.
+   ![Service Details Inspector](screenshots/screenshot_3_service_details.png)
+   - Showing selected service details for Academic Support (Technology Tower TT-108), verified facilities checklist, officer in charge, and direct action triggers.
 
 4. **React Component API & Life Cycle Event Monitor (Module 6):**
-   - Showing constructor initialization, `componentDidMount`, and `componentDidUpdate` logs with Component API controls.
+   ![LifeCycle Monitor Telemetry](screenshots/screenshot_4_lifecycle_monitor.png)
+   - Showing constructor state initialization, `componentDidMount`, and `componentDidUpdate` logs with Component API controls (`this.setState()`, `this.forceUpdate()`).
 
 5. **HOTS Scalability Justification Modal:**
+   ![HOTS Scalability Analysis](screenshots/screenshot_5_hots_scalability.png)
    - Showing the in-app architectural analysis on scaling from 5 to 50 services.
 
 6. **24/7 Priority Emergency Directory Modal:**
-   - Showing VIT Vellore emergency contacts and direct call buttons.
+   ![Emergency Directory](screenshots/screenshot_6_emergency_directory.png)
+   - Showing VIT Vellore emergency contacts with simulated direct call triggers.
 
 7. **React Developer Tools Component Tree:**
-   - Showing the inspectable React component tree in DevTools.
+   ![React DevTools Inspection](screenshots/screenshot_7_devtools_tree.png)
+   - Showing the inspectable React component tree, props, and constructor state in React DevTools.
 
 8. **Public GitHub Repository (Tested in Incognito):**
+   ![GitHub Public Repository](screenshots/screenshot_8_github_repo.png)
    - Showing the public repository accessible without authentication.
 
 ---

@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>React Developer Tools - Component Inspection</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #1e1e1e;
+      color: #cccccc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .devtools-header {
+      background: #252526;
+      border-bottom: 1px solid #3c3c3c;
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+      height: 36px;
+      gap: 15px;
+    }
+    .tab {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 12px;
+      font-weight: 600;
+      font-size: 12px;
+      color: #969696;
+      border-bottom: 2px solid transparent;
+      cursor: pointer;
+    }
+    .tab.active {
+      color: #61dafb;
+      border-bottom-color: #61dafb;
+    }
+    .tab-icon {
+      color: #61dafb;
+      font-size: 15px;
+    }
+    .sub-bar {
+      background: #2d2d2d;
+      border-bottom: 1px solid #3c3c3c;
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 12px;
+    }
+    .search-input {
+      background: #3c3c3c;
+      border: 1px solid #555;
+      color: #fff;
+      padding: 3px 8px;
+      border-radius: 3px;
+      font-size: 12px;
+      width: 200px;
+    }
+    .breadcrumbs {
+      color: #888;
+      font-size: 11px;
+    }
+    .breadcrumbs span { color: #61dafb; }
+    .main-split {
+      flex: 1;
+      display: flex;
+      overflow: hidden;
+    }
+    .tree-pane {
+      flex: 1.2;
+      border-right: 1px solid #3c3c3c;
+      padding: 10px;
+      overflow-y: auto;
+      font-family: 'JetBrains Mono', Consolas, Monaco, monospace;
+      font-size: 12px;
+      line-height: 22px;
+    }
+    .tree-node {
+      display: flex;
+      align-items: center;
+      padding: 1px 6px;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    .tree-node:hover { background: #2a2d2e; }
+    .tree-node.selected {
+      background: #094771;
+      color: #fff;
+    }
+    .indent-1 { margin-left: 16px; }
+    .indent-2 { margin-left: 32px; }
+    .indent-3 { margin-left: 48px; }
+    .tag { color: #569cd6; font-weight: 600; }
+    .tree-node.selected .tag { color: #ffffff; }
+    .key-attr { color: #9cdcfe; margin-left: 6px; font-size: 11px; }
+    .key-val { color: #ce9178; }
+    .arrow { color: #888; margin-right: 4px; font-size: 10px; }
+    .inspector-pane {
+      flex: 1;
+      background: #1e1e1e;
+      padding: 12px 16px;
+      overflow-y: auto;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    }
+    .inspector-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: #61dafb;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid #333;
+      padding-bottom: 8px;
+    }
+    .component-type {
+      font-size: 11px;
+      background: #333;
+      color: #4ec9b0;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: monospace;
+    }
+    .section-title {
+      font-size: 11px;
+      font-weight: 700;
+      color: #888;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin: 10px 0 6px;
+    }
+    .prop-row {
+      display: flex;
+      font-family: 'JetBrains Mono', Consolas, monospace;
+      font-size: 11.5px;
+      padding: 3px 0;
+      border-bottom: 1px solid #282828;
+    }
+    .prop-name { color: #9cdcfe; width: 140px; }
+    .prop-val { color: #ce9178; flex: 1; }
+    .prop-val.obj { color: #4ec9b0; }
+    .prop-val.num { color: #b5cea8; }
+    .prop-val.bool { color: #569cd6; }
+    .rendered-by {
+      margin-top: 14px;
+      font-size: 11px;
+      color: #777;
+    }
+    .rendered-by a { color: #569cd6; text-decoration: none; }
+  </style>
+</head>
+<body>
+  <div class="devtools-header">
+    <div class="tab active"><span class="tab-icon">⚛</span> Components</div>
+    <div class="tab"><span class="tab-icon">⏱</span> Profiler</div>
+    <div style="margin-left: auto; font-size: 11px; color: #888;">React 18.3.1 (Production Build) · Inspected by Ajay Berlin (24BCE0449)</div>
+  </div>
+
+  <div class="sub-bar">
+    <input type="text" class="search-input" value="<LifeCycleMonitor>" readonly>
+    <div class="breadcrumbs">App &gt; <span>LifeCycleMonitor</span></div>
+  </div>
+
+  <div class="main-split">
+    <!-- Component Tree -->
+    <div class="tree-pane">
+      <div class="tree-node"><span class="arrow">▼</span><span class="tag">&lt;App&gt;</span></div>
+      <div class="tree-node indent-1"><span class="tag">&lt;Header&gt;</span></div>
+      <div class="tree-node indent-1"><span class="tag">&lt;Hero&gt;</span></div>
+      <div class="tree-node indent-1"><span class="arrow">▼</span><span class="tag">&lt;ServiceGrid&gt;</span></div>
+      <div class="tree-node indent-2"><span class="tag">&lt;ServiceCard&gt;</span><span class="key-attr">key=<span class="key-val">"1"</span></span></div>
+      <div class="tree-node indent-2"><span class="tag">&lt;ServiceCard&gt;</span><span class="key-attr">key=<span class="key-val">"2"</span></span></div>
+      <div class="tree-node indent-2"><span class="tag">&lt;ServiceCard&gt;</span><span class="key-attr">key=<span class="key-val">"3"</span></span></div>
+      <div class="tree-node indent-2"><span class="tag">&lt;ServiceCard&gt;</span><span class="key-attr">key=<span class="key-val">"4"</span></span></div>
+      <div class="tree-node indent-2"><span class="tag">&lt;ServiceCard&gt;</span><span class="key-attr">key=<span class="key-val">"5"</span></span></div>
+      <div class="tree-node indent-2"><span class="tag">&lt;ServiceCard&gt;</span><span class="key-attr">key=<span class="key-val">"6"</span></span></div>
+      <div class="tree-node indent-2"><span class="tag">&lt;ServiceCard&gt;</span><span class="key-attr">key=<span class="key-val">"7"</span></span></div>
+      <div class="tree-node indent-2"><span class="tag">&lt;ServiceCard&gt;</span><span class="key-attr">key=<span class="key-val">"8"</span></span></div>
+      <div class="tree-node indent-1"><span class="tag">&lt;ServiceDetails&gt;</span></div>
+      <div class="tree-node indent-1 selected"><span class="tag">&lt;LifeCycleMonitor&gt;</span></div>
+      <div class="tree-node indent-1"><span class="tag">&lt;Footer&gt;</span></div>
+    </div>
+
+    <!-- Inspector Panel -->
+    <div class="inspector-pane">
+      <div class="inspector-title">
+        <span>&lt;LifeCycleMonitor&gt;</span>
+        <span class="component-type">Class Component (Module 6)</span>
+      </div>
+
+      <div class="section-title">Props</div>
+      <div class="prop-row">
+        <span class="prop-name">activeService:</span>
+        <span class="prop-val obj">{id: 1, name: "Academic Support &amp; FFCS Cell (TT)", category: "Academic Support", rating: 4.8}</span>
+      </div>
+      <div class="prop-row">
+        <span class="prop-name">totalServices:</span>
+        <span class="prop-val num">8</span>
+      </div>
+
+      <div class="section-title">State (Constructor Initialized)</div>
+      <div class="prop-row">
+        <span class="prop-name">monitorStatus:</span>
+        <span class="prop-val">"MONITORING_ACTIVE"</span>
+      </div>
+      <div class="prop-row">
+        <span class="prop-name">stateCounter:</span>
+        <span class="prop-val num">2</span>
+      </div>
+      <div class="prop-row">
+        <span class="prop-name">lastRenderTime:</span>
+        <span class="prop-val">"10:06:34 PM"</span>
+      </div>
+      <div class="prop-row">
+        <span class="prop-name">telemetryLogs:</span>
+        <span class="prop-val obj">Array(11) [ "[CONSTRUCTOR] Initialized state...", "[componentDidMount]...", "[componentDidUpdate]..." ]</span>
+      </div>
+
+      <div class="section-title">Component Lifecycle Hooks Active</div>
+      <div class="prop-row">
+        <span class="prop-name">componentDidMount:</span>
+        <span class="prop-val bool">Executed on initial mount</span>
+      </div>
+      <div class="prop-row">
+        <span class="prop-name">componentDidUpdate:</span>
+        <span class="prop-val bool">Triggered on activeService change</span>
+      </div>
+      <div class="prop-row">
+        <span class="prop-name">componentWillUnmount:</span>
+        <span class="prop-val bool">Ready for teardown</span>
+      </div>
+
+      <div class="rendered-by">
+        Rendered by <a href="#">App</a><br>
+        Source: <code>src/components/LifeCycleMonitor.jsx</code>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

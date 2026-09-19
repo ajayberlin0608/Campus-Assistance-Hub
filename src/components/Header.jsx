@@ -16,17 +16,33 @@ function Header({ onShowHots, onShowEmergency }) {
     <header className="header">
       <div className="header__left">
         <img src="/vit-logo.svg" alt="VIT Logo" className="header__logo" />
-        <span className="header__title">Campus Assistance Hub</span>
+        <div className="header__brand-text">
+          <span className="header__title">Campus Assistance Hub</span>
+          <span className="header__subtitle">VIT Vellore Main Campus</span>
+        </div>
       </div>
+
       <div className="header__center">
-        <marquee className="header__ticker" scrollamount="5">
-          Welcome to VIT Vellore Campus Assistance Hub – your one‑stop portal for all campus services!
-        </marquee>
+        <div className="header__ticker-wrap">
+          <span className="ticker-badge">LATEST NOTICE</span>
+          <marquee className="header__ticker" scrollamount="4">
+            📢 Welcome to VIT Vellore Campus Assistance Hub | 24/7 Student Grievance & Facility Support | FFCS Advising at Technology Tower (TT) | Central Library Open till 10:00 PM | Health Centre 24/7 Emergency Ambulance: Ext. 5555
+          </marquee>
+        </div>
       </div>
+
       <div className="header__right">
-        <span className="header__clock">{formatted}</span>
-        <button className="header__btn" onClick={onShowHots}>⚡ HOTS</button>
-        <button className="header__btn emergency" onClick={onShowEmergency}>🚨 Emergency</button>
+        <div className="header__student-badge" title="Student Registration Credentials">
+          <span className="student-icon">🎓</span>
+          <div className="student-info">
+            <span className="student-name">AJAY BERLIN</span>
+            <span className="student-reg">24BCE0449</span>
+          </div>
+        </div>
+
+        <span className="header__clock">🕒 {formatted} IST</span>
+        <button className="header__btn hots-btn" onClick={onShowHots} title="Module 6 HOTS Justification">⚡ HOTS</button>
+        <button className="header__btn emergency-btn" onClick={onShowEmergency} title="24/7 Priority Emergency Helplines">🚨 Emergency</button>
       </div>
     </header>
   );

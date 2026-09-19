@@ -1,42 +1,264 @@
-/* LifeCycleMonitor component styling */
-/* Premium dark theme with subtle glassmorphism and responsive layout */
-.life-cycle-monitor {
-  padding: 1.5rem 2rem;
-  background: rgba(25, 25, 25, 0.9);
-  color: #e0e0e0;
-  border-radius: 12px;
-  font-family: 'Inter', sans-serif;
-  backdrop-filter: blur(6px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+/* src/components/LifeCycleMonitor.css */
+.lifecycle-monitor {
+  background: #0f172a;
+  border-radius: 16px;
+  padding: 1.75rem;
+  color: #f8fafc;
+  box-shadow: 0 10px 30px rgba(0, 15, 35, 0.25);
+  border: 1px solid #1e293b;
+  margin-top: 1rem;
+  margin-bottom: 2.5rem;
+  position: relative;
 }
 
-.life-cycle-monitor h2 {
-  margin-bottom: 1rem;
-  color: #a0c4ff;
-  font-size: 1.75rem;
+.lifecycle-monitor__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.lifecycle-monitor__title-area {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.status-indicator-dot {
+  width: 10px;
+  height: 10px;
+  background: #10b981;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #10b981;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.2); opacity: 0.7; }
+}
+
+.lifecycle-monitor__title-area h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #f1f5f9;
+  letter-spacing: -0.01em;
+}
+
+.module-badge {
+  background: rgba(245, 158, 11, 0.2);
+  border: 1px solid #f59e0b;
+  color: #fbbf24;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 0.2rem 0.55rem;
+  border-radius: 12px;
+  text-transform: uppercase;
+}
+
+.lifecycle-monitor__status-tag {
+  font-size: 0.75rem;
+  font-family: var(--font-mono);
+  background: rgba(16, 185, 129, 0.15);
+  border: 1px solid #10b981;
+  color: #34d399;
+  padding: 0.25rem 0.65rem;
+  border-radius: 6px;
+}
+
+.lifecycle-monitor__desc {
+  font-size: 0.88rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
+.lifecycle-monitor__desc code {
+  background: #1e293b;
+  color: #38bdf8;
+  padding: 0.1rem 0.35rem;
+  border-radius: 4px;
+  font-family: var(--font-mono);
+}
+
+.lifecycle-monitor__metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.metric-box {
+  background: #1e293b;
+  border: 1px solid #334155;
+  border-radius: 8px;
+  padding: 0.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-box__label {
+  font-size: 0.72rem;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.35rem;
   font-weight: 600;
 }
 
-.life-cycle-monitor pre {
-  background: rgba(0, 0, 0, 0.6);
-  padding: 1rem;
+.metric-box__value {
+  font-size: 0.95rem;
+  color: #f8fafc;
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.active-prop-name {
+  color: #38bdf8;
+}
+
+.highlight-counter {
+  color: #f59e0b;
+  font-family: var(--font-mono);
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.mono {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: #a78bfa;
+}
+
+.lifecycle-monitor__controls {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.telemetry-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.api-setstate-btn {
+  background: #0284c7;
+  color: #ffffff;
+}
+
+.api-setstate-btn:hover {
+  background: #0369a1;
+  box-shadow: 0 0 10px rgba(2, 132, 199, 0.4);
+}
+
+.api-forceupdate-btn {
+  background: #7c3aed;
+  color: #ffffff;
+}
+
+.api-forceupdate-btn:hover {
+  background: #6d28d9;
+  box-shadow: 0 0 10px rgba(124, 58, 237, 0.4);
+}
+
+.clear-btn {
+  background: #334155;
+  color: #cbd5e1;
+  margin-left: auto;
+}
+
+.clear-btn:hover {
+  background: #475569;
+  color: #ffffff;
+}
+
+.lifecycle-terminal {
+  background: #020617;
+  border: 1px solid #1e293b;
   border-radius: 8px;
-  overflow-x: auto;
-  font-size: 0.9rem;
+  overflow: hidden;
+  font-family: var(--font-mono);
+}
+
+.lifecycle-terminal__topbar {
+  background: #0b1329;
+  padding: 0.5rem 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #1e293b;
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.dot.red { background: #ef4444; }
+.dot.yellow { background: #f59e0b; }
+.dot.green { background: #10b981; }
+
+.terminal-title {
+  font-size: 0.75rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+.terminal-count {
+  font-size: 0.7rem;
+  color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+}
+
+.lifecycle-terminal__console {
+  padding: 0.85rem 1rem;
+  max-height: 180px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  font-size: 0.8rem;
   line-height: 1.4;
 }
 
-.life-cycle-monitor .status {
-  margin-top: 0.5rem;
-  font-weight: 500;
+.log-line {
+  display: flex;
+  gap: 0.5rem;
+  color: #e2e8f0;
+}
+
+.log-index {
+  color: #38bdf8;
+  user-select: none;
+}
+
+.log-text {
+  word-break: break-all;
 }
 
 @media (max-width: 768px) {
-  .life-cycle-monitor {
-    padding: 1rem;
-  }
-  .life-cycle-monitor h2 {
-    font-size: 1.5rem;
+  .lifecycle-monitor__metrics-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

@@ -1,77 +1,120 @@
-/* EmergencyModal component styling */
-/* Premium dark theme with glassmorphism overlay */
-.emergency-modal {
-  position: fixed;
-  inset: 0;
+/* src/components/EmergencyModal.css */
+.emergency-content {
+  border-top: 5px solid #ef4444 !important;
+  max-width: 720px;
+}
+
+.emergency-badge {
+  background: #fee2e2 !important;
+  color: #b91c1c !important;
+  border-color: #fecaca !important;
+}
+
+.emergency-title {
+  color: #991b1b !important;
+}
+
+.modal__subtext {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-bottom: 1.25rem;
+}
+
+.emergency-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  margin-bottom: 1.25rem;
+}
+
+.emergency-card {
   display: flex;
   align-items: center;
-  justify-content: center;
-  background: rgba(0, 0, 0, 0.6);
-  backdrop-filter: blur(5px);
-  z-index: 1000;
-}
-
-.emergency-modal__content {
-  background: rgba(30, 30, 30, 0.95);
-  border-radius: 12px;
-  padding: 2rem 1.5rem;
-  max-width: 500px;
-  width: 90%;
-  color: #f0f0f0;
-  font-family: 'Inter', sans-serif;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.emergency-modal__header {
-  font-size: 1.5rem;
-  margin-bottom: 0.75rem;
-  font-weight: 600;
-  text-align: center;
-  color: #ff4d4f;
-}
-
-.emergency-modal__body {
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
-  text-align: center;
-}
-
-.emergency-modal__actions {
-  display: flex;
-  justify-content: center;
   gap: 1rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+  transition: all 0.2s;
 }
 
-.emergency-modal__button {
-  padding: 0.6rem 1.2rem;
+.emergency-card:hover {
+  background: #ffffff;
+  border-color: #ef4444;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.1);
+}
+
+.emergency-card__icon {
+  font-size: 1.75rem;
+  flex-shrink: 0;
+}
+
+.emergency-card__info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.emergency-card__label {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.emergency-card__desc {
+  font-size: 0.78rem;
+  color: #64748b;
+}
+
+.emergency-card__meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.2rem;
+}
+
+.phone-num {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #b91c1c;
+}
+
+.ext-badge {
+  background: #e2e8f0;
+  color: #475569;
+  font-size: 0.7rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-weight: 600;
+}
+
+.dial-btn {
+  background: #ef4444;
+  color: #ffffff;
   border: none;
+  padding: 0.45rem 0.9rem;
   border-radius: 6px;
+  font-size: 0.82rem;
+  font-weight: 700;
   cursor: pointer;
-  font-weight: 500;
-  transition: transform 0.1s ease, background-color 0.2s ease;
+  white-space: nowrap;
+  transition: all 0.2s;
 }
 
-.emergency-modal__button--confirm {
-  background: #ff4d4f;
-  color: #fff;
+.dial-btn:hover {
+  background: #dc2626;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.4);
 }
 
-.emergency-modal__button--cancel {
-  background: #555;
-  color: #ddd;
-}
-
-.emergency-modal__button:hover {
-  transform: translateY(-2px);
-}
-
-@media (max-width: 480px) {
-  .emergency-modal__content {
-    padding: 1.5rem 1rem;
+@media (max-width: 600px) {
+  .emergency-card {
+    flex-direction: column;
+    align-items: flex-start;
   }
-  .emergency-modal__header {
-    font-size: 1.25rem;
+  .dial-btn {
+    width: 100%;
+    margin-top: 0.5rem;
   }
 }
