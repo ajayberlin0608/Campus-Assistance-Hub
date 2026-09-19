@@ -21,7 +21,8 @@ class LifeCycleMonitor extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    this.log("componentDidUpdate");
+    // Log without causing state updates to avoid infinite re-renders
+    console.log("componentDidUpdate");
   }
 
   componentWillUnmount() {
@@ -34,7 +35,7 @@ class LifeCycleMonitor extends Component {
   };
 
   render() {
-    this.log("render");
+    // Removed state update from render to avoid infinite loop
     return (
       <div className="lifecycle-monitor">
         <h3>Lifecycle Monitor (Class Component)</h3>
