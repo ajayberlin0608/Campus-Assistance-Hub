@@ -1,0 +1,77 @@
+/* HotsModal component styling */
+/* Premium dark theme with glassmorphism overlay */
+.hots-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(5px);
+  z-index: 1000;
+}
+
+.hots-modal__content {
+  background: rgba(30, 30, 30, 0.95);
+  border-radius: 12px;
+  padding: 2rem 1.5rem;
+  max-width: 480px;
+  width: 90%;
+  color: #f5f5f5;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.hots-modal__header {
+  font-size: 1.4rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
+  text-align: center;
+  color: #ff4d4f;
+}
+
+.hots-modal__body {
+  margin-bottom: 1.2rem;
+  line-height: 1.6;
+  text-align: center;
+}
+
+.hots-modal__actions {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.hots-modal__button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.hots-modal__button--confirm {
+  background: #ff4d4f;
+  color: #fff;
+}
+
+.hots-modal__button--cancel {
+  background: #555;
+  color: #ddd;
+}
+
+.hots-modal__button:hover {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 480px) {
+  .hots-modal__content {
+    padding: 1.5rem 1rem;
+  }
+  .hots-modal__header {
+    font-size: 1.2rem;
+  }
+}

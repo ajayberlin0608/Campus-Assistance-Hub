@@ -1,0 +1,42 @@
+/* LifeCycleMonitor component styling */
+/* Premium dark theme with subtle glassmorphism and responsive layout */
+.life-cycle-monitor {
+  padding: 1.5rem 2rem;
+  background: rgba(25, 25, 25, 0.9);
+  color: #e0e0e0;
+  border-radius: 12px;
+  font-family: 'Inter', sans-serif;
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+.life-cycle-monitor h2 {
+  margin-bottom: 1rem;
+  color: #a0c4ff;
+  font-size: 1.75rem;
+  font-weight: 600;
+}
+
+.life-cycle-monitor pre {
+  background: rgba(0, 0, 0, 0.6);
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.life-cycle-monitor .status {
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .life-cycle-monitor {
+    padding: 1rem;
+  }
+  .life-cycle-monitor h2 {
+    font-size: 1.5rem;
+  }
+}
