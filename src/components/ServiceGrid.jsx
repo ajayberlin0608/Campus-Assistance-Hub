@@ -1,54 +1,47 @@
-import React from 'react';
-import { ServiceCard } from './ServiceCard';
-import { Icon } from './Icons';
+// src/components/ServiceGrid.jsx
+import React, { useState } from "react";
+import ServiceCard from "./ServiceCard.jsx";
+import "./ServiceGrid.css";
 
-/**
- * ServiceGrid Component
- * Coordinates dynamic layout rendering and passes down callbacks to reusable ServiceCards.
- */
-export const ServiceGrid = ({ 
-  services, 
-  totalCount, 
-  selectedService, 
-  onSelectService, 
-  onResetFilters 
-}) => {
+function ServiceGrid({ services, onSelect }) {
+  const [search, setSearch] = useState("");
+  const [category, setCategory] = useState("All");
+
+  const categories = ["All", ...new Set(services.map((s) => s.category))];
+
+  const filtered = services.filter((s) => {
+    const matchesSearch = s.name.toLowerCase().includes(search.toLowerCase()) || s.description.toLowerCase().includes(search.toLowerCase());
+    const matchesCategory = category === "All" || s.category === category;
+    return matchesSearch && matchesCategory;
+  });
+
   return (
-    <section className="service-grid-section">
-      <div className="grid-header-meta">
-        <div className="results-count-badge">
-          Showing <strong>{services.length}</strong> of <strong>{totalCount}</strong> Campus Services
-        </div>
-      </div>
-
-      {services.length === 0 ? (
-        <div className="empty-state-card">
-          <Icon name="Search" size={40} className="empty-icon" />
-          <h4 className="empty-title">No Matching Campus Services Found</h4>
-          <p className="empty-desc">
-            No campus facility or department matched your filter criteria. Try checking for keywords like "Library", "TT", "SJT", "Hostel", or reset filters.
-          </p>
-          <button 
-            type="button" 
-            className="btn-reset-filters"
-            onClick={onResetFilters}
-          >
-            <Icon name="RefreshCw" size={15} />
-            <span>Reset Search & Filters</span>
-          </button>
-        </div>
-      ) : (
-        <div className="cards-grid">
-          {services.map((service) => (
-            <ServiceCard
-              key={service.id}
-              service={service}
-              isSelected={selectedService?.id === service.id}
-              onSelectService={onSelectService}
-            />
+    <section className="service-grid">
+      <div className="service-grid__controls">
+        <input
+          type="text"
+          placeholder="Search services..."
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          className="service-grid__search"
+        />
+        <select value={category} onChange={(e) => setCategory(e.target.value)} className="service-grid__filter">
+          {categories.map((cat) => (
+            <option key={cat} value={cat}>{cat}</option>
           ))}
-        </div>
-      )}
+        </select>
+      </div>
+      <div className="service-grid__cards">
+        {filtered.length > 0 ? (
+          filtered.map((service) => (
+            <ServiceCard key={service.id} service={service} onSelect={onSelect} />
+          ))
+        ) : (
+          <p className="service-grid__empty">No services match your criteria.</p>
+        )}
+      </div>
     </section>
   );
-};
+}
+
+export default ServiceGrid;

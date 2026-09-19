@@ -1,0 +1,30 @@
+/* src/components/ServiceGrid.css */
+.service-grid {
+  display: flex;
+  flex-direction: column;
+}
+.service-grid__controls {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+.service-grid__search {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.service-grid__filter {
+  padding: 0.4rem 0.6rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+.service-grid__cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+}
+.service-grid__empty {
+  font-style: italic;
+  color: #777;
+}

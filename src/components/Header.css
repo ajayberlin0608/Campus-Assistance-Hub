@@ -1,0 +1,55 @@
+// src/components/Header.css
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-primary);
+  color: #fff;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+.header__left {
+  display: flex;
+  align-items: center;
+}
+.header__logo {
+  width: 40px;
+  height: 40px;
+  margin-right: 0.5rem;
+}
+.header__title {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+.header__center {
+  flex: 1;
+  margin: 0 1rem;
+}
+.header__ticker {
+  font-size: 0.9rem;
+  color: #e0e0e0;
+}
+.header__right {
+  display: flex;
+  align-items: center;
+}
+.header__clock {
+  margin-right: 1rem;
+  font-family: var(--font-mono);
+}
+.header__btn {
+  background: var(--color-accent);
+  border: none;
+  color: #fff;
+  padding: 0.3rem 0.6rem;
+  margin-left: 0.4rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+.header__btn:hover {
+  transform: translateY(-2px);
+}
+.header__btn.emergency {
+  background: #d32f2f;
+}
